@@ -1,6 +1,6 @@
 import React from "react";
 import "./ReposList.scss";
-import { GitHubRepo } from "../types/types";
+import { GitHubRepo } from "../interfaces/interfaces";
 import Pagination from "./Pagination";
 
 type Props = {
@@ -27,7 +27,7 @@ const ReposList: React.FC<Props> = ({ repos }) => {
 
   // Pagination logic
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [itemsPerPage, setItemsPerPage] = React.useState(5);
+  const itemsPerPage = 5;
 
   const endIndex = currentPage * itemsPerPage;
   const firstIndex = endIndex - itemsPerPage;

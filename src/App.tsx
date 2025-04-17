@@ -2,9 +2,10 @@ import { useState } from "react";
 import Search from "./components/Search";
 import ProfileCard from "./components/ProfileCard";
 import { Header } from "./components/Header";
-import { GitHubRepo } from "./types/types";
+import { GitHubRepo } from "./interfaces/interfaces";
 import ReposList from "./components/ReposList";
-import useLocalStorage from "use-local-storage";
+import { useTheme } from "./hooks/useTheme";
+import { fetchGitHubData } from "./utils/fetchGithubData";
 import "./styles/app.scss";
 
 function App() {
@@ -14,62 +15,33 @@ function App() {
   const [profileLoading, setProfileLoading] = useState(false);
   const [reposLoading, setReposLoading] = useState(false);
 
-  const preference = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [isDark, setIsDark] = useLocalStorage("isDark", preference);
+  const { isDark, toggleTheme } = useTheme();
 
   const handleSearch = async (username: string) => {
-    const base_url = "https://api.github.com";
-
     setProfileLoading(true);
     setReposLoading(true);
 
-    const cachedUserData = localStorage.getItem(`user-${username}`);
-    const cachedReposData = localStorage.getItem(`repos-${username}`);
-
-    if (cachedUserData && cachedReposData) {
-      setUserData(JSON.parse(cachedUserData));
-      setUserRepos(JSON.parse(cachedReposData));
-      setUserNotFound(false);
-      setProfileLoading(false);
-      setReposLoading(false);
-      return;
-    }
     try {
-      const userRes = await fetch(`${base_url}/users/${username}`);
-      if (!userRes.ok) throw new Error("User not found");
+      const { user, repos, fromCache } = await fetchGitHubData(username);
 
-      const userData = await userRes.json();
-      setUserData(userData);
+      setUserData(user);
+      setUserRepos(repos);
       setUserNotFound(false);
 
-      localStorage.setItem(`user-${username}`, JSON.stringify(userData));
-    } catch (err) {
-      console.error("Error fetching user:", err);
+      if (fromCache) {
+        console.log("Loaded from cache");
+      } else {
+        console.log("Fetched from API");
+      }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
       setUserData(null);
       setUserRepos(null);
       setUserNotFound(true);
     } finally {
       setProfileLoading(false);
-    }
-
-    try {
-      const reposRes = await fetch(`${base_url}/users/${username}/repos`);
-      if (!reposRes.ok) throw new Error("Repos not found");
-
-      const reposData = await reposRes.json();
-      setUserRepos(reposData);
-
-      localStorage.setItem(`repos-${username}`, JSON.stringify(reposData));
-    } catch (err) {
-      console.error("Error fetching repos:", err);
-      setUserRepos(null);
-    } finally {
       setReposLoading(false);
     }
-  };
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
   };
 
   return (
@@ -80,7 +52,7 @@ function App() {
 
         {(profileLoading || reposLoading) && (
           <div className="app__loading-overlay">
-            <div className="app__spinner"></div>
+            <div className="app__spinner" />
           </div>
         )}
 

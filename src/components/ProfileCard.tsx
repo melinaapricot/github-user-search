@@ -1,6 +1,6 @@
 import React from "react";
 import "./ProfileCard.scss";
-import { GitHubUser } from "../types/types";
+import { GitHubUser } from "../interfaces/interfaces";
 
 type Props = {
   user: GitHubUser | null;
