@@ -18,6 +18,13 @@ function App() {
   const { isDark, toggleTheme } = useTheme();
 
   const handleSearch = async (username: string) => {
+    if (username.trim() === "") {
+      setUserData(null);
+      setUserRepos(null);
+      setUserNotFound(false);
+      return;
+    }
+
     setProfileLoading(true);
     setReposLoading(true);
 
@@ -33,7 +40,6 @@ function App() {
       } else {
         console.log("Fetched from API");
       }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setUserData(null);
       setUserRepos(null);
@@ -43,7 +49,6 @@ function App() {
       setReposLoading(false);
     }
   };
-
   return (
     <div className="app" data-theme={isDark ? "dark" : "light"}>
       <Header isDark={isDark} toggleTheme={toggleTheme} />

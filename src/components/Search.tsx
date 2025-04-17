@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./Search.scss";
+import debounce from "lodash.debounce";
 
 type SearchProps = {
   onSearch: (username: string) => void;
@@ -7,6 +8,31 @@ type SearchProps = {
 
 const Search: React.FC<SearchProps> = ({ onSearch }) => {
   const [input, setInput] = useState("");
+
+  const debouncedSearch = useMemo(
+    () =>
+      debounce((value: string) => {
+        onSearch(value);
+      }, 700),
+    [onSearch]
+  );
+
+  useEffect(() => {
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [debouncedSearch]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInput(value);
+
+    if (value.trim() === "") {
+      onSearch("");
+      return;
+    }
+    debouncedSearch(value);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,7 +48,7 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
         placeholder="Search GitHub username..."
         className="search__input"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={handleChange}
       />
       <button className="search__button" type="submit">
         Search
