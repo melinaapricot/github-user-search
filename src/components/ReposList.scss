@@ -12,4 +12,12 @@
     display: flex;
     gap: 1rem;
   }
+
+  &__repo {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }

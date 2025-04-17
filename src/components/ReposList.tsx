@@ -55,9 +55,9 @@ const ReposList: React.FC<Props> = ({ repos }) => {
           </div>
         </div>
 
-        <div className="">
+        <div className="repos__list">
           {currentRepos.map((repo) => (
-            <div key={repo.id} className="user__repo">
+            <div key={repo.id} className="repos__repo">
               <h3>{repo.name}</h3>
               <p>{repo.description || "No description available"}</p>
               <p>⭐ {repo.stargazers_count}</p>
