@@ -1,0 +1,35 @@
+@use "./loading";
+
+.app {
+  width: 100%;
+  padding: 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.5s ease, color 0.5s ease,
+    border-color 0.5s ease;
+
+  &__container {
+    max-width: $breakpoint-md;
+    width: 100%;
+    margin-bottom: 2rem;
+    &__:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__error-message {
+    margin-top: 2rem;
+    color: $color-error;
+  }
+}
+
+section {
+  margin-bottom: 2rem;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}

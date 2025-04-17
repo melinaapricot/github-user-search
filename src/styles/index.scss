@@ -1,0 +1,23 @@
+@use "./themes";
+@use "./variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  font-family: $font-main;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

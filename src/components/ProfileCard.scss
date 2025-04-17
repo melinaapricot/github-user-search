@@ -1,0 +1,49 @@
+.user {
+  @include section-container;
+
+  @media (min-width: $breakpoint-md) {
+    .user {
+      gap: 2rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__avatar {
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--background-color);
+    border-radius: $rounded-sm;
+    padding: 1rem;
+
+    @media screen and (min-width: $breakpoint-md) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__contact {
+    font-style: normal;
+  }
+
+  &__link {
+    color: var(--link-color);
+  }
+}

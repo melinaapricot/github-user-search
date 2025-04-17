@@ -1,0 +1,38 @@
+@use "sass:color";
+
+.pagination {
+  margin-top: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: center;
+
+  &__button,
+  &__button--active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    font-size: 1em;
+    color: var(--text-color);
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: $rounded;
+    cursor: pointer;
+    transition: background-color 0.3s ease, filter 0.3s ease;
+
+    &:hover {
+      background-color: var(--surface-color-hover);
+    }
+  }
+
+  &__button--active {
+    background-color: $color-primary;
+    color: $color-text-dark;
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+    }
+  }
+}

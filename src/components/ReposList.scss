@@ -1,0 +1,15 @@
+.repos {
+  @include section-container;
+  &__header {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    row-gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  &__sort {
+    display: flex;
+    gap: 1rem;
+  }
+}

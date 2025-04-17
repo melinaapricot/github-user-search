@@ -1,0 +1,29 @@
+.header {
+  margin-top: 5rem;
+  justify-content: space-between;
+  align-items: self-start;
+  width: 100%;
+  max-width: $breakpoint-md;
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+
+  &__title {
+    font-family: monospace;
+  }
+
+  &__link {
+    color: var(--text-color);
+    text-decoration: none;
+  }
+
+  &__theme-toggle {
+    padding: 0.3rem 1rem;
+    border-radius: $rounded-sm;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+    align-self: center;
+  }
+}

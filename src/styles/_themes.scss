@@ -1,0 +1,28 @@
+@use "@styles/variables" as *;
+@use "sass:color";
+
+:root {
+  --background-color: #{$color-background-light};
+  --text-color: #{$color-text-light};
+  --title-color: #{$color-text-light};
+  --surface-color: #{$color-surface-light};
+  --surface-color-hover: #{color.scale($color-surface-light, $lightness: -10%)};
+  --border-color: #{$color-border-light};
+  --link-color: #{$color-primary};
+  --color-overlay: #{$color-overlay};
+  --color-primary-hover: #{color.scale($color-primary, $lightness: 10%)};
+  --font-main: #{$font-main};
+  --rounded-sm: #{$rounded-sm};
+  --rounded: #{$rounded};
+}
+
+[data-theme="dark"] {
+  --background-color: #{$color-background-dark};
+  --text-color: #{$color-text-dark};
+  --title-color: #{$color-text-dark};
+  --surface-color: #{$color-surface-dark};
+  --surface-color-hover: #{color.scale($color-surface-dark, $lightness: 10%)};
+  --border-color: #{$color-border-dark};
+  --link-color: #{$color-link-dark};
+  --color-overlay: #{$color-overlay-dark};
+}
