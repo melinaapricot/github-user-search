@@ -16,11 +16,9 @@ const Pagination: React.FC<{
       {pages.map((page, index) => {
         return (
           <button
-            className={
-              page === currentPage
-                ? "pagination__button--active"
-                : "pagination__button"
-            }
+            className={`pagination__button ${
+              page === currentPage ? "pagination__button--active" : ""
+            }`}
             key={index}
             onClick={() => setCurrentPage(page)}
           >

@@ -58,16 +58,17 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
           value={input}
           onChange={handleChange}
         />
-        {input && (
-          <button
-            type="button"
-            aria-label="Clear input"
-            className="search__delete-btn"
-            onClick={handleClear}
-          >
-            <img src={deleteIcon} alt="delete icon" />
-          </button>
-        )}
+
+        <button
+          type="button"
+          aria-label="Clear input"
+          className={`search__delete-btn ${
+            input ? "search__delete-btn--visible" : ""
+          }`}
+          onClick={handleClear}
+        >
+          <img src={deleteIcon} alt="delete icon" />
+        </button>
       </div>
 
       <button className="search__submit-btn" type="submit">

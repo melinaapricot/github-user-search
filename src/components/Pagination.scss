@@ -7,8 +7,7 @@
   width: 100%;
   justify-content: center;
 
-  &__button,
-  &__button--active {
+  &__button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,14 +24,14 @@
     &:hover {
       background-color: var(--surface-color-hover);
     }
-  }
 
-  &__button--active {
-    background-color: $color-primary;
-    color: $color-text-dark;
+    &--active {
+      background-color: $color-primary;
+      color: $color-text-dark;
 
-    &:hover {
-      background-color: var(--color-primary-hover);
+      &:hover {
+        background-color: var(--color-primary-hover);
+      }
     }
   }
 }
