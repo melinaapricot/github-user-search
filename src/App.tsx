@@ -36,14 +36,15 @@ function App() {
       setUserNotFound(false);
 
       if (fromCache) {
-        console.log("Loaded from cache");
+        console.log("Loaded from cache"); // logging for demonstration purposes
       } else {
-        console.log("Fetched from API");
+        console.log("Fetched from API"); // logging for demonstration purposes
       }
     } catch (error) {
       setUserData(null);
       setUserRepos(null);
       setUserNotFound(true);
+      console.error(error);
     } finally {
       setProfileLoading(false);
       setReposLoading(false);
