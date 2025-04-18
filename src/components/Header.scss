@@ -1,11 +1,11 @@
 .header {
   justify-content: space-between;
-  align-items: self-start;
+  align-items: baseline;
   width: 100%;
   max-width: $breakpoint-md;
   gap: 1rem;
   display: flex;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
 
   @media (min-width: $breakpoint-md) {
     margin-top: 5rem;

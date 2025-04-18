@@ -7,7 +7,7 @@ interface ToggleProps {
 
 export const ThemeToggle = ({ toggleTheme, isChecked }: ToggleProps) => {
   return (
-    <div className="toggle__container">
+    <div className="toggle__wrapper">
       <button
         type="button"
         className="toggle__button"

@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="app" data-theme={isDark ? "dark" : "light"}>
       <Header isDark={isDark} toggleTheme={toggleTheme} />
-      <main className="app__container">
+      <main className="app__wrapper">
         <Search onSearch={handleSearch} />
 
         {(profileLoading || reposLoading) && (
