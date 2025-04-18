@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./Search.scss";
+import deleteIcon from "../assets/deleteIcon.svg";
 import debounce from "lodash.debounce";
 
 type SearchProps = {
@@ -42,16 +43,34 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
     }
   };
 
+  const handleClear = () => {
+    setInput("");
+    onSearch("");
+  };
+
   return (
     <form className="search" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Search GitHub username..."
-        className="search__input"
-        value={input}
-        onChange={handleChange}
-      />
-      <button className="search__button" type="submit">
+      <div className="search__input-wrapper">
+        <input
+          type="text"
+          placeholder="Search GitHub username..."
+          className="search__input"
+          value={input}
+          onChange={handleChange}
+        />
+        {input && (
+          <button
+            type="button"
+            aria-label="Clear input"
+            className="search__delete-btn"
+            onClick={handleClear}
+          >
+            <img src={deleteIcon} alt="delete icon" />
+          </button>
+        )}
+      </div>
+
+      <button className="search__submit-btn" type="submit">
         Search
       </button>
     </form>

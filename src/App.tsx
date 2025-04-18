@@ -50,6 +50,7 @@ function App() {
       setReposLoading(false);
     }
   };
+
   return (
     <div className="app" data-theme={isDark ? "dark" : "light"}>
       <Header isDark={isDark} toggleTheme={toggleTheme} />
