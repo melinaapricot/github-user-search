@@ -24,10 +24,10 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
   }, [debouncedSearch]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     setInput(value);
 
-    if (value.trim() === "") {
+    if (value === "") {
       onSearch("");
       return;
     }
@@ -36,8 +36,9 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.trim()) {
-      onSearch(input.trim());
+    const trimmedInput = input.trim();
+    if (trimmedInput) {
+      onSearch(trimmedInput);
     }
   };
 
