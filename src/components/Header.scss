@@ -7,10 +7,6 @@
   display: flex;
   margin-bottom: 2rem;
 
-  @media (min-width: $breakpoint-md) {
-    margin-top: 5rem;
-  }
-
   &__title {
     font-family: monospace;
   }
