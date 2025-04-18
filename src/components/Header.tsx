@@ -11,10 +11,10 @@ export const Header = ({ isDark, toggleTheme }: HeaderProps) => {
     <header className="header">
       <h1 className="header__title">
         <a href="/" className="header__link">
-          GitHub User Explorer
+          GitHub User Search
         </a>
       </h1>
-      <ThemeToggle isChecked={isDark} handleChange={toggleTheme} />
+      <ThemeToggle isChecked={isDark} toggleTheme={toggleTheme} />
     </header>
   );
 };

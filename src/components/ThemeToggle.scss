@@ -3,11 +3,6 @@
     display: inline-block;
   }
 
-  &__input {
-    visibility: hidden;
-    position: absolute;
-  }
-
   &__button {
     display: flex;
     align-items: center;
@@ -20,10 +15,10 @@
     border-radius: $rounded;
     cursor: pointer;
     transition: background-color 250ms ease, color 250ms ease;
-  }
 
-  &__input:checked + &__button {
-    background-color: var(--surface-color);
-    color: var(--text-color);
+    &[aria-checked="true"] {
+      background-color: var(--surface-color);
+      color: var(--text-color);
+    }
   }
 }
