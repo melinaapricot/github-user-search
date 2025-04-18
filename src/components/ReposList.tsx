@@ -7,10 +7,10 @@ type Props = {
   repos: GitHubRepo[];
 };
 
+type SortingOptions = "stars" | "updated";
+
 const ReposList: React.FC<Props> = ({ repos }) => {
-  const [sortOption, setSortOption] = React.useState<"stars" | "updated">(
-    "updated"
-  );
+  const [sortOption, setSortOption] = React.useState<SortingOptions>("updated");
 
   const sortedRepos = React.useMemo(() => {
     return [...repos].sort((a, b) => {
@@ -25,10 +25,8 @@ const ReposList: React.FC<Props> = ({ repos }) => {
     });
   }, [repos, sortOption]);
 
-  // Pagination logic
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 5;
-
   const endIndex = currentPage * itemsPerPage;
   const firstIndex = endIndex - itemsPerPage;
   const currentRepos = sortedRepos.slice(firstIndex, endIndex);
@@ -44,9 +42,7 @@ const ReposList: React.FC<Props> = ({ repos }) => {
             <select
               id="sort"
               value={sortOption}
-              onChange={(e) =>
-                setSortOption(e.target.value as "stars" | "updated")
-              }
+              onChange={(e) => setSortOption(e.target.value as SortingOptions)}
               className="repos__sort-dropdown"
             >
               <option value="stars">Stars</option>
