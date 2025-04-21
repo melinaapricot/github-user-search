@@ -1,6 +1,8 @@
 # GitHub User Search
 React + TypeScript app for looking up GitHub users. Enter a username and search - searching is automatic with debouncing or by using the search button.
 
+Deployed link: https://melinas-github-user-search.netlify.app/
+
 ## Features
 - Search for GitHub users by username
 - View user info (avatar, description, date joined, link)
