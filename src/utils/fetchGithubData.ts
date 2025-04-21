@@ -14,6 +14,9 @@ export const fetchGitHubData = async (username: string) => {
 
   try {
     const userRes = await fetch(`${base_url}/${username}`);
+    if (userRes.status === 404) {
+      return { user: null, repos: null, fromCache: false };
+    }
     if (!userRes.ok) throw new Error("User not found");
 
     const userData = await userRes.json();

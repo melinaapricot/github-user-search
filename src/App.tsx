@@ -2,14 +2,14 @@ import { useState } from "react";
 import Search from "@components/Search";
 import ProfileCard from "@components/ProfileCard";
 import { Header } from "@components/Header";
-import { GitHubRepo } from "./interfaces/interfaces";
+import { GitHubRepo, GitHubUser } from "./interfaces/interfaces";
 import ReposList from "@components/ReposList";
 import { useTheme } from "@hooks/useTheme";
 import { fetchGitHubData } from "@utils/fetchGithubData";
 import "@styles/app.scss";
 
 function App() {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState<GitHubUser | null>(null);
   const [userNotFound, setUserNotFound] = useState(false);
   const [userRepos, setUserRepos] = useState<GitHubRepo[] | null>(null);
   const [profileLoading, setProfileLoading] = useState(false);
@@ -41,10 +41,10 @@ function App() {
         console.log("Fetched from API"); // logging for demonstration purposes
       }
     } catch (error) {
+      console.error("An error occurred:", error);
       setUserData(null);
       setUserRepos(null);
       setUserNotFound(true);
-      console.error(error);
     } finally {
       setProfileLoading(false);
       setReposLoading(false);
