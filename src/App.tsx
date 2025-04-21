@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Search from "./components/Search";
-import ProfileCard from "./components/ProfileCard";
-import { Header } from "./components/Header";
+import Search from "@components/Search";
+import ProfileCard from "@components/ProfileCard";
+import { Header } from "@components/Header";
 import { GitHubRepo } from "./interfaces/interfaces";
-import ReposList from "./components/ReposList";
-import { useTheme } from "./hooks/useTheme";
-import { fetchGitHubData } from "./utils/fetchGithubData";
-import "./styles/app.scss";
+import ReposList from "@components/ReposList";
+import { useTheme } from "@hooks/useTheme";
+import { fetchGitHubData } from "@utils/fetchGithubData";
+import "@styles/app.scss";
 
 function App() {
   const [userData, setUserData] = useState(null);
